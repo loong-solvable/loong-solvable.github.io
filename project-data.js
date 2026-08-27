@@ -146,7 +146,9 @@ window.TQYProjectLedger = {
       category: "agent",
       grade: "B/C",
       summary: "从帖子、评论和论坛文本中提取购买信号与商业意图。",
-      boundary: "本地优先实验项目，真实业务效果待验证。"
+      boundary: "本地优先实验项目，真实业务效果待验证。",
+      href: "https://loong-solvable.github.io/SIW/",
+      linkLabel: "查看在线演示"
     },
     {
       slug: "xseeboost",
