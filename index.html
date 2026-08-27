@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="唐清乐的个人总作品集。29 个项目横跨 AI 产品、商业系统、自动化、内容流水线与工程实验。"
+    />
+    <title>唐清乐 | 个人总作品集</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23141414'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-size='28' font-weight='800' fill='%23f8f8f6'%3ET%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260825-1" />
+  </head>
+  <body>
+    <header class="site-header" data-site-header>
+      <a class="brand" href="#top" aria-label="回到首页">
+        <strong>唐清乐</strong>
+        <span>Tang Qingle</span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        data-nav-toggle
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="sr-only">打开导航菜单</span>
+      </button>
+      <nav class="nav-links" id="site-nav" aria-label="页面导航" data-nav-links>
+        <a href="#top">首页</a>
+        <a href="#about">关于我</a>
+        <a href="#featured">作品集</a>
+        <a href="#ledger">完整目录</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="hero__label">个人作品集</p>
+          <h1 id="hero-title"><span>用代码创造</span><span>有价值的作品</span></h1>
+          <p class="hero__role">Software Developer / Tool Maker / Creative Technologist</p>
+          <p class="hero__intro">
+            你好，我是唐清乐，一名专注于软件开发、工具构建、自动化与 AI
+            应用的开发者。我把复杂想法做成可运行产品，让技术真正服务于人。
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#featured">查看我的作品</a>
+            <a class="button button--ghost" href="#about">了解更多关于我</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <span class="hero__huge" aria-hidden="true">做</span>
+          <img
+            class="hero__portrait"
+            src="./assets/tqy-hero-portrait.webp"
+            alt="唐清乐黑白人物肖像"
+            width="1122"
+            height="1402"
+            fetchpriority="high"
+          />
+          <span class="hero__seal" aria-hidden="true">唐</span>
+        </div>
+      </section>
+
+      <section class="about reveal" id="about" aria-labelledby="about-title">
+        <div class="about__intro">
+          <p class="section-label"><span>关于我</span><span class="section-label__index">/01</span><span class="section-label__latin">ABOUT</span></p>
+          <h2 id="about-title" class="sr-only">关于我</h2>
+          <p>
+            我叫唐清乐，是一名专注于软件开发与工具构建的开发者。我喜欢通过代码构建能跑通真实业务的产品，尤其擅长把复杂需求压成清楚的页面、流程和交付物。
+          </p>
+          <p>
+            擅长从 0 到 1 构建系统与工具，关注代码质量、可维护性、业务闭环和真实验收，同时保持学习热情，持续探索新技术。
+          </p>
+        </div>
+        <div class="about__skills">
+          <p class="section-label"><span>能力</span><span class="section-label__latin">SKILLS</span></p>
+          <ul class="skills-grid">
+            <li><strong>Python</strong><span>后端开发 / 自动化</span></li>
+            <li><strong>Web 开发</strong><span>完整页面与系统交付</span></li>
+            <li><strong>TypeScript</strong><span>前端工程 / Node.js</span></li>
+            <li><strong>AI 应用</strong><span>Agent / RAG / 内容生成</span></li>
+            <li><strong>自动化</strong><span>运营链路 / 部署加固</span></li>
+            <li><strong>内容系统</strong><span>流水线 / 质检 / 发布</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="featured reveal" id="featured" aria-labelledby="featured-title">
+        <div class="featured__header">
+          <p class="section-label"><span>作品集</span><span class="section-label__index">/02</span><span class="section-label__latin">PROJECTS</span></p>
+          <h2 id="featured-title" class="sr-only">代表项目</h2>
+          <p class="featured__note">
+            共 <span data-project-count></span> 个项目，这里是 3 条代表线。
+            <a href="#ledger">查看完整项目目录</a>
+          </p>
+        </div>
+        <div class="featured__grid" data-featured-grid></div>
+      </section>
+
+      <section class="ledger reveal" id="ledger" aria-labelledby="ledger-title">
+        <div class="ledger__header">
+          <h2 id="ledger-title">完整项目目录</h2>
+          <p class="ledger__count">共 <span data-project-count></span> 个项目</p>
+        </div>
+        <div class="ledger__filters" data-ledger-filters role="group" aria-label="按项目类别筛选"></div>
+        <ul class="ledger__grid" data-ledger-grid></ul>
+        <noscript>
+          <p class="ledger__noscript">
+            完整项目目录收录于本仓库 project-data.js，启用 JavaScript 后在此渲染，并提供分类筛选。
+          </p>
+        </noscript>
+      </section>
+
+      <section class="websites reveal" id="websites" aria-labelledby="websites-title">
+        <div class="websites__copy">
+          <h2 id="websites-title">网站作品集</h2>
+          <p>
+            七个中文网站案例，覆盖个人主页、创意工作室、高端产品、消费应用、企业服务、活动落地页和酒店民宿。它们是这套总作品集的一个子集。
+          </p>
+          <a class="button button--ghost" href="./portfolio-sites/index.html">进入网站作品集</a>
+        </div>
+        <div class="websites__thumbs">
+          <img
+            src="./portfolio-sites/assets/mingxuan-profile.jpg"
+            alt="个人主页网站案例封面"
+            loading="lazy"
+          />
+          <img
+            src="./portfolio-sites/assets/northline-works.jpg"
+            alt="企业服务网站案例封面"
+            loading="lazy"
+          />
+          <img
+            src="./portfolio-sites/assets/voltage-room.jpg"
+            alt="活动落地页网站案例封面"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <section class="contact reveal" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">有具体的问题，就有得聊。</h2>
+        <p>项目代码、工程记录和这份总账的数据源都在公开仓库里。</p>
+        <a class="button button--primary" href="https://github.com/loong-solvable" target="_blank" rel="noreferrer">
+          GitHub：loong-solvable
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>唐清乐 · 个人总作品集</p>
+      <a href="#top">回到顶部</a>
+    </footer>
+
+    <script src="./project-data.js?v=20260825-1"></script>
+    <script src="./script.js?v=20260825-1"></script>
+  </body>
+</html>

@@ -1,0 +1,546 @@
+/* ============================================================
+   重点案例页专属样式（K3 参考图驱动：单案例 Hero + 问题/做法/交付）
+   复用根 styles.css 的 token 与基础样式，本文件只做案例页扩展。
+   移动优先，断点只递进：640 / 1024 / 1280 / 1440。
+   ============================================================ */
+
+/* 案例标题字号档：固定档位，断点切换，不用 vw 连续缩放 */
+:root {
+  --text-case: 2rem; /* 32px */
+}
+
+@media (min-width: 640px) {
+  :root {
+    --text-case: 2.25rem; /* 36px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-case: 2.5rem; /* 40px */
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --text-case: 2.75rem; /* 44px */
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --text-case: 3rem; /* 48px */
+  }
+}
+
+/* header：第一行 品牌 + 返回首页/上一个/下一个；第二行 紧凑案例索引 */
+.case-header {
+  column-gap: var(--s2);
+}
+
+.case-topnav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.case-topnav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s1);
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.case-topnav a:hover {
+  color: var(--ink);
+}
+
+.case-topnav__home,
+.case-topnav__home:hover {
+  color: var(--accent);
+}
+
+.case-topnav__home:hover {
+  border-bottom-color: var(--accent);
+}
+
+@media (min-width: 1024px) {
+  .case-topnav {
+    gap: var(--s2);
+  }
+}
+
+/* 案例索引：导航下紧凑一行，横向可滚动，整行高度 ≤56px */
+.case-index {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid var(--line);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.case-index a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 44px;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.case-index a span {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.case-index a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* case entry：每条 = 案例 Hero + 正文 */
+.case-entry {
+  border-top: 1px solid var(--line);
+  scroll-margin-top: var(--s3);
+}
+
+.case-entry:first-of-type {
+  border-top: 0;
+}
+
+.case-entry__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--s4) var(--s3) var(--s5);
+}
+
+@media (min-width: 1024px) {
+  .case-entry__inner {
+    padding: var(--s3) var(--s4) var(--s5);
+  }
+}
+
+/* 案例 Hero：移动 头/图/事实 三段纵向；桌面 左身份 45% / 右视觉 55% */
+.case-hero {
+  display: grid;
+  gap: var(--s3);
+}
+
+.case-hero__id {
+  display: contents;
+}
+
+.case-hero__head {
+  order: 1;
+}
+
+.case-hero__visual {
+  order: 2;
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.case-hero__meta {
+  order: 3;
+}
+
+@media (min-width: 1024px) {
+  .case-hero {
+    grid-template-columns: 0.45fr 0.55fr;
+    gap: var(--s5);
+    min-height: min(calc(100dvh - 220px), 700px);
+  }
+
+  .case-hero__id {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--s3);
+  }
+}
+
+@media (min-width: 1440px) {
+  .case-hero {
+    grid-template-columns: 0.42fr 0.58fr;
+  }
+}
+
+/* 首条案例错峰进入：JS 依次加 .is-in。隐藏态挂在 .js 下，无 JS 时内容直接可见 */
+.case-entry:first-of-type .case-hero__head,
+.case-entry:first-of-type .case-hero__visual,
+.case-entry:first-of-type .case-hero__meta {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.js .case-entry:first-of-type .case-hero__head,
+.js .case-entry:first-of-type .case-hero__visual,
+.js .case-entry:first-of-type .case-hero__meta {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.js .case-entry:first-of-type .case-hero__head.is-in,
+.js .case-entry:first-of-type .case-hero__visual.is-in,
+.js .case-entry:first-of-type .case-hero__meta.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-entry:first-of-type .case-hero__head,
+  .case-entry:first-of-type .case-hero__visual,
+  .case-entry:first-of-type .case-hero__meta {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* 身份区 */
+.case-kicker {
+  color: var(--accent);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.case-title {
+  margin-top: var(--s2);
+  font-size: var(--text-case);
+  font-weight: var(--w-heavy);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.case-sub {
+  margin-top: var(--s1);
+  color: var(--muted);
+  font-size: var(--text-h3);
+  font-weight: var(--w-semibold);
+}
+
+.case-lead {
+  margin-top: var(--s2);
+  max-width: 32rem;
+}
+
+/* 事实 dl：行间 1px 细线 */
+.case-meta {
+  display: grid;
+}
+
+.case-meta > div {
+  display: grid;
+  grid-template-columns: 5.5em 1fr;
+  gap: var(--s2);
+  align-items: baseline;
+  padding: var(--s1) 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-meta dt {
+  color: var(--ink);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.case-meta dd {
+  color: var(--muted);
+  font-size: var(--text-note);
+}
+
+/* 无公开入口：静态说明文字，左侧 accent 竖线，不做按钮 */
+.case-status {
+  display: inline-block;
+  margin-top: var(--s2);
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.case-cta {
+  margin-top: var(--s2);
+}
+
+/* 视觉区：移动 16:10 通栏裁切；桌面撑满右列高度 */
+.case-hero__visual img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.case-hero__visual:hover img {
+  transform: scale(1.03);
+}
+
+@media (min-width: 1024px) {
+  .case-hero__visual img {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
+/* 闲鱼：会话→判断→回复→接管 大号流程事实面板 */
+.flow-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s3);
+  height: 100%;
+  padding: var(--s3);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--on-dark);
+}
+
+.flow-panel__label {
+  color: var(--on-dark-muted);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.flow-panel__steps {
+  display: grid;
+  gap: var(--s1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-panel__steps li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  font-size: 1.375rem;
+  font-weight: var(--w-heavy);
+  line-height: 1.3;
+}
+
+.flow-panel__steps li span {
+  color: var(--on-dark-muted);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.flow-panel__steps .flow-panel__arrow {
+  padding-left: calc(2em + var(--s2));
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: var(--w-semibold);
+}
+
+.flow-panel__note {
+  padding-top: var(--s2);
+  border-top: 1px solid rgba(248, 248, 246, 0.24);
+  color: var(--on-dark-muted);
+  font-size: var(--text-note);
+}
+
+@media (min-width: 1024px) {
+  .flow-panel {
+    padding: var(--s4);
+  }
+
+  .flow-panel__steps li {
+    font-size: 1.5rem;
+  }
+}
+
+/* 微信日报：输入/输出/隐私/校验 四格事实面板 */
+.fact-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 1px;
+  height: 100%;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--line);
+}
+
+.fact-panel > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: var(--s2) var(--s3);
+  background: var(--paper);
+}
+
+.fact-panel dt {
+  color: var(--accent);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.fact-panel dd {
+  color: var(--ink);
+  font-size: var(--text-note);
+}
+
+/* 网站作品：三张封面联排 */
+.works-covers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s1);
+  height: 100%;
+}
+
+.works-covers img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .works-covers img {
+    transition: transform 0.35s ease;
+  }
+
+  .works-covers img:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .works-covers {
+    gap: var(--s2);
+  }
+
+  .works-covers img {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
+/* 正文：问题 / 做法 / 交付，桌面三列 */
+.case-body {
+  margin-top: var(--s3);
+}
+
+.case-cols {
+  display: grid;
+  gap: var(--s3);
+  padding-top: var(--s2);
+  border-top: 1px solid var(--line);
+}
+
+.case-cols dt {
+  color: var(--accent);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.case-cols dd {
+  margin-top: var(--s1);
+  color: var(--muted);
+}
+
+@media (min-width: 1024px) {
+  .case-cols {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s4);
+  }
+}
+
+/* 系统链路 / 业务主链 */
+.flow-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s1) var(--s2);
+  margin: var(--s3) 0 0;
+  padding: var(--s2) 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.flow-chain li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--s2);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--paper);
+  font-size: var(--text-note);
+  font-weight: var(--w-semibold);
+}
+
+.flow-chain .flow-chain__arrow {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+}
+
+/* footer */
+.case-footer {
+  border-top: 1px solid var(--line);
+}
+
+.case-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2) var(--s4);
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--s2) var(--s3);
+  color: var(--muted);
+  font-size: var(--text-note);
+}
+
+.case-footer__inner p {
+  margin: 0;
+}
+
+.case-footer__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.case-footer__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  font-weight: var(--w-semibold);
+  transition: color 0.2s ease;
+}
+
+.case-footer__nav a:hover {
+  color: var(--accent);
+}
+
+@media (min-width: 1024px) {
+  .case-footer__inner {
+    padding: var(--s2) var(--s4);
+  }
+}

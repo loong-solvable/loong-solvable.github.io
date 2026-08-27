@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一个中文前端作品展示集，集中展示七个可点击进入的完整网站案例。">
+    <title>前端作品展示集</title>
+    <link rel="icon" href="data:,">
+    <link rel="preload" href="assets/mingxuan-profile.jpg" as="image">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="gallery-body">
+    <main class="gallery-shell">
+      <header class="gallery-nav">
+        <a class="brand-link" href="index.html">前端作品展示集</a>
+        <nav aria-label="作品集导航">
+          <a href="#overview">总览</a>
+          <a href="#featured">精选</a>
+          <a href="#filters">筛选</a>
+        </nav>
+        <div class="mode-toggle" data-mode-toggle></div>
+      </header>
+
+      <section id="overview" class="gallery-hero">
+        <div>
+          <p class="kicker">完整中文网站案例</p>
+          <h1>网站作品集。</h1>
+          <p>七个不同风格的网站案例，点进去就能看完整页面。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#concepts">看作品</a>
+            <a class="button secondary" href="#filters">筛选作品</a>
+          </div>
+        </div>
+        <aside class="gallery-panel showcase-panel" aria-label="作品封面拼贴">
+          <a class="showcase-main" href="mingxuan-profile/" aria-label="打开张明轩个人主页">
+            <img src="assets/mingxuan-profile.jpg" alt="张明轩个人主页封面">
+          </a>
+          <div class="showcase-pair">
+            <a href="neon-foundry/" aria-label="打开 Neon Foundry">
+              <img src="assets/neon-foundry.jpg" alt="Neon Foundry 网站封面">
+            </a>
+            <a href="lumen-atelier/" aria-label="打开 Lumen Atelier">
+              <img src="assets/lumen-atelier.jpg" alt="Lumen Atelier 网站封面">
+            </a>
+          </div>
+          <div class="panel-row">
+            <strong>点击封面进入作品</strong>
+            <span>7 个完整页面</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="featured" class="featured-section">
+        <div class="section-copy">
+          <h2>先看三种最适合作品集的方向。</h2>
+          <p>个人主页、暗黑创意、高端产品，最容易体现前端与审美能力。</p>
+        </div>
+        <div class="featured-grid" data-featured-grid></div>
+      </section>
+
+      <section id="filters" class="gallery-controls" aria-label="作品筛选">
+        <div class="filter-row" data-filters></div>
+        <div class="search-wrap">
+          <label for="site-search">搜索概念</label>
+          <input id="site-search" data-search type="search" placeholder="试试：高端、活动、企业">
+        </div>
+      </section>
+
+      <p class="gallery-state" data-gallery-state>正在加载网站概念</p>
+      <section id="concepts" class="site-grid" data-project-grid aria-live="polite"></section>
+
+      <footer class="gallery-footer">
+        <span>原创选题、中文文案和生成素材</span>
+        <span>静态 HTML、CSS 和少量 JS</span>
+      </footer>
+    </main>
+    <script src="site-data.js"></script>
+    <script src="theme.js"></script>
+    <script src="portfolio.js"></script>
+  </body>
+</html>
