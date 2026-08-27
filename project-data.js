@@ -104,7 +104,9 @@ window.TQYProjectLedger = {
       caseAnchor: "infinite-story",
       grade: "B",
       summary: "AI 驱动的角色与剧情游玩平台，包含世界观、多 Agent、记忆和社区体验。",
-      boundary: "成本、长期运行和商业化状态未完整核验。"
+      boundary: "已开放使用示例数据的纯前端交互原型；完整平台的成本、长期运行和商业化状态仍待核验。",
+      href: "./demos/yunmeng/",
+      linkLabel: "查看交互演示"
     },
     {
       slug: "storymaker",
