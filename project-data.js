@@ -231,8 +231,10 @@ window.TQYProjectLedger = {
       title: "CatJump",
       category: "engineering",
       grade: "B",
-      summary: "完成 3D 美术层重建、槽位映射和干净项目归档。",
-      boundary: "交付资产已形成，持续运营状态未核验。"
+      summary: "使用 Phaser 做成可直接游玩的 2D 猫咪跳跃 H5 原型，包含蓄力、落点判定、积分和本地周榜。",
+      boundary: "在线版是单机演示；分数保存在当前浏览器，好友周榜为模拟数据。",
+      href: "./demos/cat-jump/",
+      linkLabel: "开始试玩"
     },
     {
       slug: "indie-games",
